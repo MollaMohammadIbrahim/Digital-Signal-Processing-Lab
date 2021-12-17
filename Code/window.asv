@@ -1,0 +1,31 @@
+
+Fs = 1000*40;
+N = 500;
+T = 1/Fs;
+t = linspace(0,1,500); % here 500 data point will be shown in one sinosoidal
+y = 2*sin(2*pi*5000*t);
+subplot(4,2,1);
+plot(y);
+title("Given Signal");
+
+n = 0:N-1;
+hmw = 0.54-0.46*cos( (2*pi*n)/(N-1) );
+subplot(4,2,2);
+plot(hmw);
+title("Hamming Window");
+
+yhmw = hmw.*y;
+subplot(4,2,3);
+plot(yhmw);
+title("hamming * y(n)");
+
+% Rectangular window
+rw = ones(0,N-1);
+subplot(4,2,4);
+plot (rw);
+title("Rectangular Window");
+% Multiplying with rectangular window
+yrw = y.*rw;
+subplot(4,2,5);
+plot (yrw);
+title("y(n) * rectangular window");
